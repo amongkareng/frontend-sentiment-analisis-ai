@@ -1,0 +1,60 @@
+<span>
+                {openPreprocessing ? (
+                  <MdKeyboardArrowDown
+                    onClick={() => setOpenPreprocessing(!openPreprocessing)}
+                  />
+                ) : (
+                  <MdKeyboardArrowUp
+                    onClick={() => setOpenPreprocessing(!openPreprocessing)}
+                  />
+                )}
+              </span>
+            
+            {openPreprocessing ? (
+              <></>
+            ) : ()}
+
+            import React from "react";
+
+const StopwordPage = ({ dataStopword, stemming }) => {
+  return (
+    <>
+      <div className="flex items-center justify-start">
+        <button
+          onClick={() => stemming()}
+          className="px-6 py-2 text-white bg-blue-800 rounded-md"
+        >
+          Stemming
+        </button>
+      </div>
+      <div className="relative overflow-x-auto">
+        <table className="w-full text-sm font-light text-left">
+          <thead className="font-medium border-b">
+            <tr>
+              <th scope="col" className="px-6 py-4">
+                No
+              </th>
+              <th scope="col" className="px-6 py-4">
+                Tokenize
+              </th>
+              <th scope="col" className="px-6 py-4">
+                Stopword
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {dataStopword.map((item, number) => (
+              <tr key={number + 1} className="border-b hover:bg-neutral-100">
+                <td className="px-6 py-4 font-medium">{number + 1}</td>
+                <td className="px-6 py-4">{item[1]}</td>
+                <td className="px-6 py-4">{item[2]}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
+  );
+};
+
+export default StopwordPage;
